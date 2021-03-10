@@ -12,7 +12,7 @@ import com.souza.caio.services.exceptions.ObjectNotFoundException;
 @Service
 public class PedidoService {
 
-	@Autowired //Instanciada automaticamente
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private PedidoRepository repository;
 	
 	public Pedido buscar(Integer id){

@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Embeddable //Subtipo, pois a jucao dos campos forma uma única primary key
+@Embeddable //TUTORIAL: Subtipo, pois a junção dos campos forma uma única primary key
 public class ItemPedidoPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 

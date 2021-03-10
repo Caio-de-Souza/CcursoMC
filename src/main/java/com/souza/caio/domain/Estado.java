@@ -21,8 +21,8 @@ public class Estado implements Serializable{
 	private Integer id;
 	private String nome;
 	
-	@JsonIgnore //nao será serializado
-	@OneToMany(mappedBy="estado") //define que o vinculo ja foi vinculado na classe Cidade, pelo atributo estado
+	@JsonIgnore //TUTORIAL: não será serializado
+	@OneToMany(mappedBy="estado") //TUTORIAL: define que o vínculo ja foi definido na classe Cidade, pelo atributo estado
 	private List<Cidade> cidades = new ArrayList<>();
 	
 	public Estado() {}

@@ -27,7 +27,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private Double preco;
 	
-	@JsonIgnore //nao será serializado
+	@JsonIgnore //TUTORIAL: nao será serializado
 	@ManyToMany
 	@JoinTable( name="PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name="produto_id"),
@@ -88,7 +88,7 @@ public class Produto implements Serializable{
 		this.itens = itens;
 	}
 	
-	@JsonIgnore //tudo que comeca com get é serializado, portanto este caso precisa ser ignorado
+	@JsonIgnore //TUTORIAL: tudo que comeca com get é serializado, portanto este caso precisa ser ignorado
 	public List<Pedido> getPedidos(){
 		List<Pedido> pedidos = new ArrayList<>();
 		

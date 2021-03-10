@@ -22,7 +22,7 @@ public abstract class Pagamento implements Serializable{
 	private Integer id;
 	private int estado;
 	
-	@JsonIgnore //nao será serializado
+	@JsonIgnore //TUTORIAL: não será serializado
 	@OneToOne
 	@JoinColumn(name="pedido_id")
 	@MapsId

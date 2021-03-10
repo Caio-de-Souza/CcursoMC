@@ -12,7 +12,7 @@ import com.souza.caio.services.exceptions.ObjectNotFoundException;
 @Service
 public class CategoriaService {
 
-	@Autowired //Instanciada automaticamente
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private CategoriaRepository repository;
 	
 	public Categoria buscar(Integer id){

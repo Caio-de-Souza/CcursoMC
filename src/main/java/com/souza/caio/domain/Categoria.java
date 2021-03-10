@@ -21,7 +21,7 @@ public class Categoria implements Serializable{
 	private Integer id;
 	private String nome;
 	
-	@ManyToMany(mappedBy="categorias") //o mapeamento está declarado na classe Produto, na lista categorias
+	@ManyToMany(mappedBy="categorias") //TUTORIAL: o mapeamento está declarado na classe Produto, na lista categorias
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {}

@@ -34,31 +34,31 @@ import com.souza.caio.repositories.ProdutoRepository;
 @SpringBootApplication
 public class CursoMcApplication implements CommandLineRunner{
 
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private CategoriaRepository categoriaRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private ProdutoRepository produtoRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private EstadoRepository estadoRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private CidadeRepository cidadeRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private ClienteRepository clienteRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private EnderecoRepository enderecoRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private PedidoRepository pedidoRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private PagamentoRepository pagamentoRepository;
 	
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {

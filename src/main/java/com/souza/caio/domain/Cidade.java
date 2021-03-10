@@ -21,7 +21,7 @@ public class Cidade implements Serializable{
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name="estado_id") //nome do campo foreign key
+	@JoinColumn(name="estado_id") //TUTORIAL: nome do campo foreign key
 	private Estado estado;
 	
 	public Cidade() {}

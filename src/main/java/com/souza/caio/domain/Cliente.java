@@ -27,16 +27,16 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String email;
 	private String cpfOuCnpj;
-	private Integer tipo; //Enum é gerenciada internamente como número e externamente como srting
+	private Integer tipo; //TUTORIAL: Enum é gerenciada internamente como número e externamente como srting
 	
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
-	private Set<String>  telefones = new HashSet<>(); //Set é um conjunto, no qual não se pode repetir dados
+	private Set<String>  telefones = new HashSet<>(); //TUTORIAL: Set é um conjunto, no qual não se pode repetir dados
 	
-	@JsonIgnore //nao será serializado
+	@JsonIgnore //TUTORIAL: não será serializado
 	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	

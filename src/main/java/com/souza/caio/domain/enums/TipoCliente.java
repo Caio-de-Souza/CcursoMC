@@ -13,7 +13,7 @@ public enum TipoCliente {
 		this.descricao = descricao;
 	}
 
-	//ENUM não pode ter set
+	//TUTORIAL: ENUM não pode ter set
 	public int getCodigo() {
 		return codigo;
 	}

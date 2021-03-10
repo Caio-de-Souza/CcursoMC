@@ -14,7 +14,7 @@ import com.souza.caio.services.CategoriaService;
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
 
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private CategoriaService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)

@@ -14,7 +14,7 @@ import com.souza.caio.services.PedidoService;
 @RequestMapping(value="/pedidos")
 public class PedidoResource {
 
-	@Autowired
+	@Autowired //TUTORIAL: Instanciada automaticamente
 	private PedidoService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
