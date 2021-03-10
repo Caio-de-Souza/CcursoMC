@@ -26,6 +26,7 @@ import com.souza.caio.repositories.CidadeRepository;
 import com.souza.caio.repositories.ClienteRepository;
 import com.souza.caio.repositories.EnderecoRepository;
 import com.souza.caio.repositories.EstadoRepository;
+import com.souza.caio.repositories.ItemPedidoRepository;
 import com.souza.caio.repositories.PagamentoRepository;
 import com.souza.caio.repositories.PedidoRepository;
 import com.souza.caio.repositories.ProdutoRepository;
@@ -56,6 +57,9 @@ public class CursoMcApplication implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursoMcApplication.class, args);
@@ -157,7 +161,7 @@ public class CursoMcApplication implements CommandLineRunner{
 		p2.getItens().addAll(Arrays.asList(ip3));
 		p3.getItens().addAll(Arrays.asList(ip2));
 		
-		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 		
 	}
 
