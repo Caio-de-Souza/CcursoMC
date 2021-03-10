@@ -15,7 +15,7 @@ public class CategoriaService {
 	@Autowired //TUTORIAL: Instanciada automaticamente
 	private CategoriaRepository repository;
 	
-	public Categoria buscar(Integer id){
+	public Categoria find(Integer id){
 		Optional<Categoria> categoriaEncontrada = repository.findById(id);
 		return categoriaEncontrada.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
@@ -24,5 +24,10 @@ public class CategoriaService {
 	public Categoria insert(Categoria novaCategoria) {
 		novaCategoria.setId(null); //TUTORIAL: caso a primary key não esteja nula, o objeto é atualizado
 		return repository.save(novaCategoria);
+	}
+
+	public Categoria update(Categoria categoriaAtualizar) {
+		find(categoriaAtualizar.getId());
+		return repository.save(categoriaAtualizar);
 	}
 }
