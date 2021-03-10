@@ -1,6 +1,8 @@
 package com.souza.caio.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.souza.caio.domain.Categoria;
+import com.souza.caio.dto.CategoriaDTO;
 import com.souza.caio.services.CategoriaService;
 
 @RestController
@@ -22,13 +25,25 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
+	public ResponseEntity<Categoria> read(@PathVariable Integer id) {
 		Categoria categoriaEncontrada = service.read(id);	
 		return ResponseEntity.ok().body(categoriaEncontrada);
 	}
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<CategoriaDTO>> readAll() {
+		List<Categoria> categoriasEncontradas = service.readAll();	
+		List<CategoriaDTO> categoriasDTO = 
+				categoriasEncontradas
+				.stream()
+				.map(categoria -> new CategoriaDTO(categoria))
+				.collect(Collectors.toList());
+		return ResponseEntity.ok().body(categoriasDTO);
+	}
+	
+	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Categoria novaCategoria){ //TUTORIAL: @RequestBody Converte o objeto automaticamente
+	public ResponseEntity<Void> create(@RequestBody Categoria novaCategoria){ //TUTORIAL: @RequestBody Converte o objeto automaticamente
 		novaCategoria = service.create(novaCategoria);
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/{id}")
