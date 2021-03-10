@@ -20,4 +20,9 @@ public class CategoriaService {
 		return categoriaEncontrada.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
+
+	public Categoria insert(Categoria novaCategoria) {
+		novaCategoria.setId(null); //TUTORIAL: caso a primary key não esteja nula, o objeto é atualizado
+		return repository.save(novaCategoria);
+	}
 }
