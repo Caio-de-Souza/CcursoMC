@@ -23,13 +23,13 @@ public class CategoriaResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Categoria> find(@PathVariable Integer id) {
-		Categoria categoriaEncontrada = service.find(id);	
+		Categoria categoriaEncontrada = service.read(id);	
 		return ResponseEntity.ok().body(categoriaEncontrada);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Categoria novaCategoria){ //TUTORIAL: @RequestBody Converte o objeto automaticamente
-		novaCategoria = service.insert(novaCategoria);
+		novaCategoria = service.create(novaCategoria);
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(novaCategoria.getId())
@@ -41,6 +41,12 @@ public class CategoriaResource {
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Categoria categoriaAtualizar, @PathVariable Integer id){
 		categoriaAtualizar = service.update(categoriaAtualizar);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
