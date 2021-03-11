@@ -20,7 +20,7 @@ public abstract class Pagamento implements Serializable{
 
 	@Id
 	private Integer id;
-	private int estado;
+	private Integer estado;
 	
 	@JsonIgnore //TUTORIAL: não será serializado
 	@OneToOne
@@ -33,8 +33,13 @@ public abstract class Pagamento implements Serializable{
 	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.estado = estado.getCodigo();
 		this.pedido = pedido;
+		
+		if(estado == null) {
+			this.estado = null;
+		}else {
+			this.estado = estado.getCodigo();
+		}
 	}
 
 	public Integer getId() {

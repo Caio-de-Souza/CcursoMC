@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.souza.caio.domain.Categoria;
+import com.souza.caio.domain.Cliente;
 import com.souza.caio.dto.CategoriaDTO;
 import com.souza.caio.repositories.CategoriaRepository;
 import com.souza.caio.services.exceptions.DataIntegrityException;
@@ -34,8 +35,13 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria categoriaAtualizar) {
-		read(categoriaAtualizar.getId());
-		return repository.save(categoriaAtualizar);
+		Categoria categoria = read(categoriaAtualizar.getId());
+		updateData(categoriaAtualizar, categoria);
+		return repository.save(categoria);
+	}
+
+	private void updateData(Categoria categoriaAtualizar, Categoria categoria) {
+		categoria.setNome(categoriaAtualizar.getNome());
 	}
 
 	public void delete(Integer id) {
