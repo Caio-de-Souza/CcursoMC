@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.souza.caio.domain.Cliente;
+import com.souza.caio.domain.Categoria;
 import com.souza.caio.domain.Cliente;
 import com.souza.caio.dto.ClienteDTO;
+import com.souza.caio.dto.ClienteNovoDTO;
 import com.souza.caio.services.ClienteService;
 
 @RestController
@@ -72,6 +73,18 @@ public class ClienteResource {
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> create(@Valid @RequestBody ClienteNovoDTO clienteNovoDTO){ //TUTORIAL: @RequestBody Converte o objeto automaticamente
+		Cliente novoCliente = service.fromDTO(clienteNovoDTO);
+		novoCliente = service.create(novoCliente);
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(novoCliente.getId())
+				.toUri();
+		
+		return ResponseEntity.created(uri).build();
 	}
 	
 	
