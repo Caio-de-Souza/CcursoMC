@@ -19,9 +19,9 @@ public class PedidoResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Pedido> read(@PathVariable Integer id) {
-		Pedido categoriaEncontrada = service.read(id);
+		Pedido pedidoEncontrado = service.read(id);
 		
-		return ResponseEntity.ok().body(categoriaEncontrada);
+		return ResponseEntity.ok().body(pedidoEncontrado);
 	}
 	
 	
