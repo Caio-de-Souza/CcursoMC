@@ -14,7 +14,6 @@ import com.souza.caio.domain.enums.EstadoPagamento;
 import com.souza.caio.repositories.ItemPedidoRepository;
 import com.souza.caio.repositories.PagamentoRepository;
 import com.souza.caio.repositories.PedidoRepository;
-import com.souza.caio.repositories.ProdutoRepository;
 import com.souza.caio.services.exceptions.ObjectNotFoundException;
 
 @Service
