@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.souza.caio.services.DBService;
+import com.souza.caio.services.EmailService;
+import com.souza.caio.services.MockEmailService;
 
 @Configuration
 @Profile("test") //Todos os beans da classe serão ativados somente quando o profile for 'test'
@@ -21,5 +23,10 @@ public class TestConfig {
 	public boolean instantiateDatabase() throws ParseException {
 		dbService.instantiateTestDatabase();
 		return true;
+	}
+	
+	@Bean
+	public EmailService emailService() {
+		return new MockEmailService();
 	}
 }
