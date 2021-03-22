@@ -15,12 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.souza.caio.domain.Cidade;
 import com.souza.caio.domain.Cliente;
 import com.souza.caio.domain.Endereco;
+import com.souza.caio.domain.enums.Perfil;
 import com.souza.caio.domain.enums.TipoCliente;
 import com.souza.caio.dto.ClienteDTO;
 import com.souza.caio.dto.ClienteNovoDTO;
 import com.souza.caio.repositories.CidadeRepository;
 import com.souza.caio.repositories.ClienteRepository;
 import com.souza.caio.repositories.EnderecoRepository;
+import com.souza.caio.security.UserSS;
+import com.souza.caio.services.exceptions.AuthorizationException;
 import com.souza.caio.services.exceptions.DataIntegrityException;
 import com.souza.caio.services.exceptions.ObjectNotFoundException;
 
@@ -48,6 +51,12 @@ public class ClienteService {
 	}
 	
 	public Cliente read(Integer id){
+		
+		UserSS user = UserService.authenticated();
+		if(user == null || !user.hasHole(Perfil.ADMIN) && !user.getId().equals(id) ) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
 		Optional<Cliente> clienteEncontrado = repository.findById(id);
 		return clienteEncontrado.orElseThrow(() -> new ObjectNotFoundException(
 			"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
