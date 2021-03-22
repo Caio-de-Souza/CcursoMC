@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.souza.caio.domain.Categoria;
 import com.souza.caio.domain.Cliente;
 import com.souza.caio.dto.ClienteDTO;
 import com.souza.caio.dto.ClienteNovoDTO;
@@ -37,6 +37,7 @@ public class ClienteResource {
 		return ResponseEntity.ok().body(clienteEncontrado);
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')") //TUTORIAL: Apenas usuário com perfil ADMIN pode acessar o endpoint
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> readAll() {
 		List<Cliente> categoriasEncontradas = service.readAll();	
@@ -69,6 +70,7 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')") //TUTORIAL: Apenas usuário com perfil ADMIN pode acessar o endpoint
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
