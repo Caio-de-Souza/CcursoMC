@@ -37,8 +37,8 @@ public class PedidoService {
 	@Autowired //TUTORIAL: Instanciada automaticamente
 	private ClienteService clienteService;
 	
-	@Autowired //TUTORIAL: Instanciada automaticamente
-	private EmailService emailService;
+	//@Autowired //TUTORIAL: Instanciada automaticamente
+	//private EmailService emailService;
 	
 	public Pedido read(Integer id){
 		Optional<Pedido> pedidosEncontrados = repository.findById(id);
@@ -69,7 +69,7 @@ public class PedidoService {
 				itemPedido.setPedido(novoPedido);
 		}
 		itemPedidoRepository.saveAll(novoPedido.getItens());
-		emailService.sendOrderConfirmationHtmlEmail(novoPedido);
+		//emailService.sendOrderConfirmationHtmlEmail(novoPedido);
 		return novoPedido;
 	}
 }
