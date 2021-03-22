@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import com.souza.caio.services.DBService;
 import com.souza.caio.services.EmailService;
 import com.souza.caio.services.MockEmailService;
+import com.souza.caio.services.SmtpEmailService;
 
 @Configuration
 @Profile("test") //Todos os beans da classe serão ativados somente quando o profile for 'test'
@@ -26,7 +27,7 @@ public class TestConfig {
 	}
 	
 	@Bean
-	public EmailService emailService() {
-		return new MockEmailService();
+	public SmtpEmailService emailService() {
+		return new SmtpEmailService();
 	}
 }
